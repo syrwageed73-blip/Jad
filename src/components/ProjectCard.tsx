@@ -4,7 +4,6 @@ import React from 'react';
 import { Project } from '@/types';
 import ProjectVisual from './ProjectVisual';
 import { ArrowUpRight } from 'lucide-react';
-import { sound } from '@/utils/sound';
 
 interface ProjectCardProps {
   project: Project;
@@ -18,16 +17,16 @@ export default function ProjectCard({ project, index, onOpenModal }: ProjectCard
 
   // The Info Block
   const InfoBlock = (
-    <div className="p-6 sm:p-8 lg:p-12 flex flex-col justify-between h-full bg-[var(--bg-color)]">
-      <div className="space-y-6">
+    <div className="p-5 sm:p-8 lg:p-12 flex flex-col justify-between h-full bg-[var(--bg-color)]">
+      <div className="space-y-5 sm:space-y-6">
         {/* Large Pixel Project Number matching the reference image */}
-        <div className="font-pixel text-4xl sm:text-5xl lg:text-6xl text-[var(--text-primary)] font-bold tracking-tight">
+        <div className="font-pixel text-3xl sm:text-5xl lg:text-6xl text-[var(--text-primary)] font-bold tracking-tight">
           {project.number}
         </div>
 
         {/* Project Title */}
         <div className="space-y-2">
-          <h3 className="font-mono text-xl sm:text-2xl font-bold uppercase tracking-wider text-[var(--text-primary)]">
+          <h3 className="font-mono text-lg sm:text-xl lg:text-2xl font-bold uppercase tracking-wider text-[var(--text-primary)] break-words">
             {project.title}
           </h3>
           <p className="text-xs sm:text-sm text-[var(--text-muted)] font-mono leading-relaxed max-w-xl">
@@ -54,7 +53,6 @@ export default function ProjectCard({ project, index, onOpenModal }: ProjectCard
       <div className="pt-8 flex items-center gap-6 text-xs font-mono">
         <button
           onClick={() => {
-            sound.playClick(900, 0.03);
             onOpenModal(project);
           }}
           className="flex items-center gap-1.5 text-[var(--text-primary)] hover:text-[#c8f56a] transition-colors group underline underline-offset-4 cursor-pointer"
@@ -67,7 +65,6 @@ export default function ProjectCard({ project, index, onOpenModal }: ProjectCard
           href={project.repoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => sound.playClick(800, 0.02)}
           className="flex items-center gap-1.5 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors group"
         >
           <span className="tracking-wider">GITHUB</span>
@@ -79,7 +76,7 @@ export default function ProjectCard({ project, index, onOpenModal }: ProjectCard
 
   // The Visual Block
   const VisualBlock = (
-    <div className="p-4 sm:p-6 lg:p-8 flex items-center justify-center bg-[var(--bg-surface)]/30 h-full">
+    <div className="p-3 sm:p-6 lg:p-8 flex items-center justify-center bg-[var(--bg-surface)]/30 h-full">
       <div className="w-full h-full max-w-xl">
         <ProjectVisual project={project} />
       </div>

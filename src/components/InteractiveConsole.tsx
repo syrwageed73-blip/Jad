@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon, X, Maximize2, Minimize2, Play, CheckCircle2, Copy, Check } from 'lucide-react';
-import { sound } from '@/utils/sound';
 
 interface ConsoleProps {
   isOpen: boolean;
@@ -34,7 +33,6 @@ export default function InteractiveConsole({ isOpen, onClose }: ConsoleProps) {
   if (!isOpen) return null;
 
   const runCommand = (cmd: string) => {
-    sound.playClick(750, 0.03);
     const trimmed = cmd.trim();
     if (!trimmed) return;
 
@@ -156,10 +154,10 @@ date: ${new Date().toUTCString()}
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-black/85 backdrop-blur-md">
       <div
         className={`w-full bg-[#070809] border border-[#1f2225] shadow-2xl flex flex-col font-mono text-xs transition-all duration-200 ${
-          isMaximized ? 'h-full max-w-full' : 'max-w-3xl h-[520px]'
+          isMaximized ? 'h-full max-w-full' : 'max-w-3xl h-[88vh] sm:h-[520px]'
         }`}
       >
         {/* Terminal Title Bar */}

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Activity, Server, Database, Shield, Zap, Terminal, Wifi, CheckCircle2, Play, RefreshCw } from 'lucide-react';
-import { sound } from '@/utils/sound';
 
 interface VisualizerProps {
   type?: 'hero' | 'api' | 'ecommerce' | 'chat' | 'ai' | 'auth' | 'storage';
@@ -37,7 +36,6 @@ export default function ArchitectureVisualizer({
   const currentLatency = latencyHistory[latencyHistory.length - 1];
 
   const handleSimulateBurst = () => {
-    sound.playClick(1000, 0.05);
     setIsSpiking(true);
     setReqCount((prev) => prev + 15000);
     setTimeout(() => setIsSpiking(false), 1200);
@@ -102,7 +100,6 @@ export default function ArchitectureVisualizer({
             <button
               key={tab}
               onClick={() => {
-                sound.playClick(850, 0.02);
                 setActiveTab(tab);
               }}
               className={`px-2.5 py-1 uppercase tracking-wider transition-colors cursor-pointer ${
@@ -137,7 +134,6 @@ export default function ArchitectureVisualizer({
                   <div
                     key={n.key}
                     onClick={() => {
-                      sound.playClick(900, 0.02);
                       setSelectedNode(n.key as any);
                     }}
                     className={`border p-2 cursor-pointer transition-all ${
@@ -245,33 +241,33 @@ export default function ArchitectureVisualizer({
       </div>
 
       {/* Bottom Telemetry Strip & Interactive Burst Button */}
-      <div className="relative z-10 pt-3 border-t border-[#1c2024] flex flex-wrap items-center justify-between gap-3 text-[10px] font-mono">
-        <div className="grid grid-cols-3 gap-3 flex-1 text-center">
+      <div className="relative z-10 pt-3 border-t border-[#1c2024] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 text-[10px] font-mono">
+        <div className="grid grid-cols-3 gap-1 sm:gap-3 flex-1 text-center">
           <div>
             <span className="text-[var(--text-dim)] block text-[9px] uppercase">RPS Rate</span>
-            <span className="text-[var(--text-primary)] font-bold">{reqCount.toLocaleString()} req/s</span>
+            <span className="text-[var(--text-primary)] font-bold text-[10px] sm:text-xs truncate block">{reqCount.toLocaleString()} req/s</span>
           </div>
           <div className="border-x border-[#1c2024]">
             <span className="text-[var(--text-dim)] block text-[9px] uppercase">p99 Latency</span>
-            <span className="text-[#c8f56a] font-bold">{currentLatency} ms</span>
+            <span className="text-[#c8f56a] font-bold text-[10px] sm:text-xs">{currentLatency} ms</span>
           </div>
           <div>
             <span className="text-[var(--text-dim)] block text-[9px] uppercase">Error Rate</span>
-            <span className="text-[var(--text-primary)] font-bold">0.000%</span>
+            <span className="text-[var(--text-primary)] font-bold text-[10px] sm:text-xs">0.000%</span>
           </div>
         </div>
 
         {/* Load Burst Simulator Trigger */}
         <button
           onClick={handleSimulateBurst}
-          className={`px-2.5 py-1 text-[9px] font-bold border transition-all cursor-pointer flex items-center gap-1 shrink-0 ${
+          className={`px-3 py-1.5 text-[10px] sm:text-[9px] font-bold border transition-all cursor-pointer flex items-center justify-center gap-1 shrink-0 ${
             isSpiking
               ? 'bg-[#c8f56a] text-[#08090a] border-[#c8f56a]'
               : 'border-[#1c2024] hover:border-[#c8f56a] text-[var(--text-muted)] hover:text-[#c8f56a] bg-[#0c0d10]'
           }`}
           title="Simulate 15,000 synthetic load packets"
         >
-          <Zap className="w-2.5 h-2.5" />
+          <Zap className="w-3 h-3" />
           <span>{isSpiking ? 'PACKETS INJECTED' : 'BURST TEST'}</span>
         </button>
       </div>

@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Menu, X, ArrowUpRight, Terminal as TerminalIcon, Volume2, VolumeX } from 'lucide-react';
-import { sound } from '@/utils/sound';
+import { Menu, X, ArrowUpRight, Terminal as TerminalIcon } from 'lucide-react';
 
 interface NavbarProps {
   onOpenTerminal?: () => void;
@@ -10,15 +9,6 @@ interface NavbarProps {
 
 export default function Navbar({ onOpenTerminal }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState(true);
-
-  const toggleSound = () => {
-    sound.enabled = !soundEnabled;
-    setSoundEnabled(!soundEnabled);
-    if (!soundEnabled) {
-      sound.playSuccess();
-    }
-  };
 
   const navLinks = [
     { name: 'about', href: '#about' },
@@ -28,17 +18,12 @@ export default function Navbar({ onOpenTerminal }: NavbarProps) {
     { name: 'contact', href: '#contact' },
   ];
 
-  const handleLinkClick = () => {
-    sound.playClick(800, 0.02);
-  };
-
   return (
     <header className="fixed top-0 left-0 w-full z-40 bg-[#08090a]/95 backdrop-blur-md border-b border-[#1c2024] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Left: Minimal Monogram Logo */}
         <a
           href="#"
-          onClick={handleLinkClick}
           className="flex items-center gap-3 group cursor-pointer"
           aria-label="Jad Aldassouki - Back-End Developer Home"
         >
@@ -61,7 +46,6 @@ export default function Navbar({ onOpenTerminal }: NavbarProps) {
             <a
               key={link.name}
               href={link.href}
-              onClick={handleLinkClick}
               className="hover:text-[var(--text-primary)] transition-colors relative py-1 hover:underline underline-offset-4 decoration-[#c8f56a]"
             >
               {link.name}
@@ -69,14 +53,11 @@ export default function Navbar({ onOpenTerminal }: NavbarProps) {
           ))}
         </nav>
 
-        {/* Right: Interactive Terminal & Sound Toggle */}
+        {/* Right: Interactive Terminal & Connect Action */}
         <div className="flex items-center space-x-3">
           {/* Interactive Shell / Terminal Button */}
           <button
-            onClick={() => {
-              sound.playClick(900, 0.03);
-              onOpenTerminal?.();
-            }}
+            onClick={() => onOpenTerminal?.()}
             className="flex items-center gap-2 text-xs text-[var(--text-primary)] hover:text-[#c8f56a] px-2.5 py-1.5 border border-[#1c2024] hover:border-[#c8f56a]/60 bg-[#0d0f11] transition-all cursor-pointer group"
             title="Open Interactive Backend Terminal (curl / SQL)"
           >
@@ -87,30 +68,19 @@ export default function Navbar({ onOpenTerminal }: NavbarProps) {
             </span>
           </button>
 
-          {/* Sound Toggle */}
-          <button
-            onClick={toggleSound}
-            className="p-1.5 text-[var(--text-muted)] hover:text-[#c8f56a] border border-[#1c2024] hover:border-[#c8f56a]/50 transition-colors cursor-pointer"
-            title={soundEnabled ? 'Disable mechanical sound feedback' : 'Enable mechanical sound feedback'}
-            aria-label="Toggle sound feedback"
-          >
-            {soundEnabled ? <Volume2 className="w-3.5 h-3.5 text-[#c8f56a]" /> : <VolumeX className="w-3.5 h-3.5 text-[var(--text-dim)]" />}
-          </button>
-
           {/* Direct Connect Action */}
           <a
             href="#contact"
-            onClick={handleLinkClick}
             className="hidden lg:flex items-center gap-1.5 text-xs text-[var(--text-primary)] hover:text-[#c8f56a] py-1 px-2.5 border border-[#1c2024] hover:border-[#c8f56a] transition-all"
           >
             <span className="text-[var(--text-muted)]">—</span>
             <span>connect</span>
           </a>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button with 44px touch target */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-1.5 text-[var(--text-muted)] hover:text-[var(--text-primary)] border border-[#1c2024]"
+            className="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-primary)] border border-[#1c2024] cursor-pointer"
             aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -120,25 +90,22 @@ export default function Navbar({ onOpenTerminal }: NavbarProps) {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[#1c2024] bg-[#08090a] px-6 py-6 space-y-4 font-mono">
-          <nav className="flex flex-col space-y-4 text-sm text-[var(--text-muted)]">
+        <div className="md:hidden border-t border-[#1c2024] bg-[#08090a]/98 backdrop-blur-xl px-5 py-6 space-y-5 font-mono shadow-2xl">
+          <nav className="flex flex-col space-y-1 text-sm text-[var(--text-muted)]">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => {
-                  handleLinkClick();
-                  setMobileMenuOpen(false);
-                }}
-                className="hover:text-[var(--text-primary)] flex items-center justify-between py-2 border-b border-[#1c2024]/50"
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-[var(--text-primary)] flex items-center justify-between py-3 px-2 border-b border-[#1c2024]/60 active:bg-[#0e1012] transition-colors"
               >
-                <span>{link.name}</span>
+                <span className="font-semibold tracking-wider">{link.name}</span>
                 <ArrowUpRight className="w-4 h-4 text-[#c8f56a]" />
               </a>
             ))}
           </nav>
-          <div className="pt-2 flex items-center justify-between text-xs text-[var(--text-muted)]">
-            <span className="flex items-center gap-2">
+          <div className="pt-3 flex items-center justify-between text-xs text-[var(--text-muted)] border-t border-[#1c2024]/80">
+            <span className="flex items-center gap-2 text-[11px]">
               <span className="w-2 h-2 rounded-full bg-[#c8f56a] animate-pulse-lime" />
               Available for freelance
             </span>
@@ -147,9 +114,9 @@ export default function Navbar({ onOpenTerminal }: NavbarProps) {
                 onOpenTerminal?.();
                 setMobileMenuOpen(false);
               }}
-              className="px-2.5 py-1 border border-[#c8f56a] text-[#c8f56a] flex items-center gap-1 text-[11px]"
+              className="px-3 py-1.5 border border-[#c8f56a] text-[#c8f56a] flex items-center gap-1.5 text-xs font-bold active:bg-[#c8f56a]/15 transition-colors cursor-pointer"
             >
-              <TerminalIcon className="w-3 h-3" />
+              <TerminalIcon className="w-3.5 h-3.5" />
               <span>TERMINAL</span>
             </button>
           </div>

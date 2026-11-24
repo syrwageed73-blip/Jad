@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { ArrowUpRight, CheckCircle2, Shield, Terminal, Zap, Cpu, GraduationCap, Award } from 'lucide-react';
-import { sound } from '@/utils/sound';
 
 export default function AboutSection() {
   const stats = [
@@ -15,7 +14,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="relative border-b border-[#1c2024] bg-[#08090a]">
       {/* Section Header */}
-      <div className="border-b border-[#1c2024] px-6 sm:px-10 lg:px-14 py-6 flex items-center justify-between">
+      <div className="border-b border-[#1c2024] px-4 sm:px-10 lg:px-14 py-4 sm:py-6 flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs font-mono">
           <span className="text-[#c8f56a] font-bold">—</span>
           <h2 className="text-[var(--text-primary)] font-semibold tracking-wider uppercase text-xs">
@@ -32,9 +31,9 @@ export default function AboutSection() {
       {/* Main Editorial Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
         {/* Left Column: Big Headline & Key Focus */}
-        <div className="lg:col-span-6 p-6 sm:p-10 lg:p-14 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#1c2024]">
+        <div className="lg:col-span-6 p-5 sm:p-10 lg:p-14 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#1c2024]">
           <div className="space-y-6">
-            <h3 className="font-mono text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[var(--text-primary)] leading-tight lowercase">
+            <h3 className="font-mono text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[var(--text-primary)] leading-tight lowercase break-words">
               building the systems <br />
               behind the experience.
             </h3>
@@ -55,7 +54,7 @@ export default function AboutSection() {
           </div>
 
           {/* Education & Focus Grid */}
-          <div className="pt-10 grid grid-cols-2 gap-3 border-t border-[#1c2024] font-mono">
+          <div className="pt-8 sm:pt-10 grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 border-t border-[#1c2024] font-mono">
             {stats.map((s, i) => (
               <div key={i} className="p-3 bg-[#0c0d10] border border-[#1c2024]">
                 <span className="text-[9px] text-[var(--text-dim)] block uppercase tracking-wider">{s.label}</span>
@@ -66,7 +65,7 @@ export default function AboutSection() {
         </div>
 
         {/* Right Column: In-Depth Background from CV */}
-        <div className="lg:col-span-6 p-6 sm:p-10 lg:p-14 flex flex-col justify-between bg-[#0a0b0d]">
+        <div className="lg:col-span-6 p-5 sm:p-10 lg:p-14 flex flex-col justify-between bg-[#0a0b0d]">
           <div className="space-y-6 font-mono text-xs">
             {/* Education Track */}
             <div className="space-y-2">
@@ -131,7 +130,6 @@ export default function AboutSection() {
             <span className="text-[var(--text-muted)]">READY TO COLLABORATE?</span>
             <a
               href="#contact"
-              onClick={() => sound.playClick(800, 0.02)}
               className="flex items-center gap-1.5 text-[var(--text-primary)] hover:text-[#c8f56a] transition-colors underline underline-offset-4 font-bold"
             >
               <span>CONNECT WITH JAD</span>

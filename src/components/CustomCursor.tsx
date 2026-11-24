@@ -6,17 +6,22 @@ export default function CustomCursor() {
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [visible, setVisible] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
-  const [enabled, setEnabled] = useState(true);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    // Check if device supports fine pointer (mouse)
-    const isTouch = window.matchMedia('(pointer: coarse)').matches;
-    if (isTouch) {
-      setEnabled(false);
-      return;
-    }
+    // Completely disable on mobile and tablet (below lg breakpoint: 1024px) or coarse touch devices
+    const checkIsDesktop = () => {
+      const isTouch =
+        window.matchMedia('(pointer: coarse)').matches ||
+        window.innerWidth < 1024;
+      setEnabled(!isTouch);
+    };
+
+    checkIsDesktop();
+    window.addEventListener('resize', checkIsDesktop);
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (window.innerWidth < 1024) return;
       setPosition({ x: e.clientX, y: e.clientY });
       setVisible(true);
 
@@ -43,6 +48,7 @@ export default function CustomCursor() {
     document.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
+      window.removeEventListener('resize', checkIsDesktop);
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
@@ -53,7 +59,7 @@ export default function CustomCursor() {
 
   return (
     <div
-      className="pointer-events-none fixed z-9999 transition-transform duration-75 ease-out"
+      className="hidden lg:block pointer-events-none fixed z-9999 transition-transform duration-75 ease-out"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,

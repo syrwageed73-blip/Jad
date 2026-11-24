@@ -24,22 +24,22 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 bg-black/80 backdrop-blur-sm overflow-y-auto">
       <div 
-        className="relative w-full max-w-4xl bg-[#090a0c] border border-[var(--border-color)] shadow-2xl my-8 font-mono text-xs max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-4xl bg-[#090a0c] border border-[var(--border-color)] shadow-2xl my-4 sm:my-8 font-mono text-xs max-h-[94vh] sm:max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-[var(--border-color)] bg-[#0d0e11]">
+        <div className="flex items-center justify-between p-3.5 sm:p-6 border-b border-[var(--border-color)] bg-[#0d0e11]">
           <div className="flex items-center gap-3">
             <span className="font-pixel text-xl sm:text-2xl text-[#c8f56a]">
               {project.number}
             </span>
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] uppercase tracking-wider">
+              <h3 className="text-sm sm:text-lg font-bold text-[var(--text-primary)] uppercase tracking-wider break-words">
                 {project.title}
               </h3>
-              <p className="text-[11px] text-[var(--text-muted)]">
+              <p className="text-[10px] sm:text-[11px] text-[var(--text-muted)]">
                 {project.subtitle}
               </p>
             </div>
@@ -47,7 +47,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           <button
             onClick={onClose}
-            className="p-1.5 border border-[var(--border-color)] text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[#c8f56a] transition-colors cursor-pointer"
+            className="p-1.5 border border-[var(--border-color)] text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[#c8f56a] transition-colors cursor-pointer shrink-0"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -55,7 +55,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="p-4 sm:p-6 overflow-y-auto space-y-6 flex-1">
+        <div className="p-3.5 sm:p-6 overflow-y-auto space-y-5 sm:space-y-6 flex-1">
           {/* Top Status & Role Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px] bg-[#0c0d10] p-3 border border-[var(--border-color)]">
             <div>
@@ -196,13 +196,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 sm:p-6 border-t border-[var(--border-color)] bg-[#0d0e11] flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
+        <div className="p-3.5 sm:p-6 border-t border-[var(--border-color)] bg-[#0d0e11] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-3 justify-center sm:justify-start">
             <a
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs text-[var(--text-primary)] hover:text-[#c8f56a] transition-colors border border-[var(--border-color)] hover:border-[#c8f56a] px-3 py-1.5"
+              className="flex items-center justify-center gap-1.5 text-xs text-[var(--text-primary)] hover:text-[#c8f56a] transition-colors border border-[var(--border-color)] hover:border-[#c8f56a] px-3 py-2 w-full sm:w-auto"
             >
               <GithubIcon className="w-3.5 h-3.5" />
               <span>GITHUB REPOSITORY</span>
@@ -212,7 +212,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           <button
             onClick={onClose}
-            className="px-4 py-1.5 bg-[#c8f56a] text-[#0a0b0b] font-bold text-xs uppercase tracking-wider hover:bg-[#d6f88b] transition-colors cursor-pointer"
+            className="px-4 py-2 bg-[#c8f56a] text-[#0a0b0b] font-bold text-xs uppercase tracking-wider hover:bg-[#d6f88b] transition-colors cursor-pointer text-center"
           >
             CLOSE CASE STUDY
           </button>

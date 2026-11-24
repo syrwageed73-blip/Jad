@@ -3,20 +3,18 @@
 import React from 'react';
 import { ArrowUp, Mail, Shield } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
-import { sound } from '@/utils/sound';
 
 export default function Footer() {
   const scrollToTop = () => {
-    sound.playClick(900, 0.03);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <footer className="border-t border-[var(--border-color)] bg-[var(--bg-color)] font-mono text-xs">
       {/* Upper Status Ticker */}
-      <div className="border-b border-[var(--border-color)] px-6 sm:px-10 lg:px-14 py-4 flex flex-wrap items-center justify-between gap-4 text-[11px] text-[var(--text-muted)]">
+      <div className="border-b border-[var(--border-color)] px-4 sm:px-10 lg:px-14 py-3 sm:py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-4 text-[11px] text-[var(--text-muted)]">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#c8f56a] animate-pulse-lime" />
+          <span className="w-2 h-2 rounded-full bg-[#c8f56a] animate-pulse-lime shrink-0" />
           <span className="text-[var(--text-primary)] font-semibold">
             ALL SYSTEMS OPERATIONAL
           </span>
@@ -25,7 +23,7 @@ export default function Footer() {
           </span>
         </div>
 
-        <div className="flex items-center gap-6 text-[10px]">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-[10px]">
           <span>LOCATION: DAMASCUS, SYRIA</span>
           <span>TIMEZONE: UTC +3</span>
           <span className="text-[#c8f56a] hidden md:inline">TLS 1.3 ENCRYPTED</span>
@@ -33,7 +31,7 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Body */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-14 py-8 sm:py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left: Logo & Identification */}
         <div className="flex items-center gap-3">
           <div className="w-7 h-7 border border-[var(--text-primary)] flex items-center justify-center font-bold text-xs tracking-tighter text-[var(--text-primary)]">

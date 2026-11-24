@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { skillsData } from '@/data/skills';
 import { Server, Database, Cloud, ShieldCheck, Check, Search, Terminal, Sparkles } from 'lucide-react';
-import { sound } from '@/utils/sound';
 
 export default function TechnicalExpertise() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,7 +18,7 @@ export default function TechnicalExpertise() {
   return (
     <section id="expertise" className="relative border-b border-[#1c2024] bg-[#08090a]">
       {/* Section Header */}
-      <div className="border-b border-[#1c2024] px-6 sm:px-10 lg:px-14 py-6 flex flex-wrap items-center justify-between gap-4">
+      <div className="border-b border-[#1c2024] px-4 sm:px-10 lg:px-14 py-4 sm:py-6 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-2 text-xs font-mono">
           <span className="text-[#c8f56a] font-bold">—</span>
           <h2 className="text-[var(--text-primary)] font-semibold tracking-wider uppercase text-xs">
@@ -29,27 +28,27 @@ export default function TechnicalExpertise() {
         </div>
 
         {/* Live Search & Filter Bar */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-2 px-2.5 py-1 bg-[#0d0f12] border border-[#1c2024] focus-within:border-[#c8f56a] transition-colors text-xs font-mono">
-            <Search className="w-3.5 h-3.5 text-[var(--text-dim)]" />
+        <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex items-center gap-2 px-2.5 py-1.5 bg-[#0d0f12] border border-[#1c2024] focus-within:border-[#c8f56a] transition-colors text-xs font-mono flex-1 sm:flex-initial">
+            <Search className="w-3.5 h-3.5 text-[var(--text-dim)] shrink-0" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="filter backend tools..."
-              className="bg-transparent text-xs text-[var(--text-primary)] outline-hidden w-36 sm:w-48 placeholder:text-[var(--text-dim)]"
+              className="bg-transparent text-xs text-[var(--text-primary)] outline-hidden w-full sm:w-48 placeholder:text-[var(--text-dim)]"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="text-[10px] text-[var(--text-dim)] hover:text-[var(--text-primary)]"
+                className="text-[10px] text-[var(--text-dim)] hover:text-[var(--text-primary)] shrink-0 cursor-pointer"
               >
                 ✕
               </button>
             )}
           </div>
 
-          <span className="text-[10px] text-[#c8f56a] border border-[#c8f56a]/30 px-2 py-1 bg-[#c8f56a]/10 hidden sm:inline font-mono">
+          <span className="text-[10px] text-[#c8f56a] border border-[#c8f56a]/30 px-2 py-1 bg-[#c8f56a]/10 hidden sm:inline font-mono shrink-0">
             100% PURE BACKEND
           </span>
         </div>
@@ -67,7 +66,7 @@ export default function TechnicalExpertise() {
           return (
             <div
               key={catIdx}
-              className="p-6 sm:p-8 flex flex-col justify-between bg-[#08090a] hover:bg-[#0c0e11]/50 transition-colors"
+              className="p-5 sm:p-8 flex flex-col justify-between bg-[#08090a] hover:bg-[#0c0e11]/50 transition-colors"
             >
               <div>
                 {/* Category Header */}
@@ -87,7 +86,6 @@ export default function TechnicalExpertise() {
                     <div
                       key={sIdx}
                       onClick={() => {
-                        sound.playClick(920, 0.02);
                         setSelectedSkill({
                           name: skill.name,
                           desc: skill.description,
@@ -185,7 +183,7 @@ export default function TechnicalExpertise() {
       )}
 
       {/* Engineering Philosophy Banner */}
-      <div className="border-t border-[#1c2024] p-6 sm:p-8 bg-[#060708] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
+      <div className="border-t border-[#1c2024] p-5 sm:p-8 bg-[#060708] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
         <div className="flex items-start gap-3">
           <span className="text-[#c8f56a] font-bold">01</span>
           <div>

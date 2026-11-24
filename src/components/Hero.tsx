@@ -3,7 +3,6 @@
 import React from 'react';
 import ArchitectureVisualizer from './ArchitectureVisualizer';
 import { ArrowDown, ArrowUpRight, MapPin, Globe, Shield, Terminal } from 'lucide-react';
-import { sound } from '@/utils/sound';
 
 interface HeroProps {
   onSelectProject?: (projectId: string) => void;
@@ -17,9 +16,9 @@ export default function Hero({ onSelectProject, onOpenTerminal }: HeroProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[calc(100vh-4rem)]">
         
         {/* LEFT COLUMN: Editorial Typography & Availability Status */}
-        <div className="lg:col-span-6 p-6 sm:p-10 lg:p-14 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#1c2024] relative bg-[#08090a]">
+        <div className="lg:col-span-6 p-5 sm:p-10 lg:p-14 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-[#1c2024] relative bg-[#08090a]">
           {/* Top content */}
-          <div className="pt-6 sm:pt-10 space-y-7">
+          <div className="pt-4 sm:pt-10 space-y-6 sm:space-y-7">
             {/* Identity Badge */}
             <div className="space-y-2">
               <div className="text-[11px] font-mono tracking-widest text-[#c8f56a] uppercase flex items-center gap-2">
@@ -29,7 +28,7 @@ export default function Hero({ onSelectProject, onOpenTerminal }: HeroProps) {
               </div>
 
               {/* Monospaced pixel-inspired main headline matching the reference */}
-              <h1 className="font-pixel text-4xl sm:text-5xl xl:text-6xl text-[var(--text-primary)] tracking-tight leading-[1.15]">
+              <h1 className="font-pixel text-3xl sm:text-4xl md:text-5xl xl:text-6xl text-[var(--text-primary)] tracking-tight leading-[1.15] break-words">
                 back-end <br />
                 developer
               </h1>
@@ -56,7 +55,6 @@ export default function Hero({ onSelectProject, onOpenTerminal }: HeroProps) {
             <div className="pt-2">
               <button
                 onClick={() => {
-                  sound.playClick(900, 0.03);
                   onOpenTerminal?.();
                 }}
                 className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)] hover:text-[#c8f56a] border border-[#1c2024] hover:border-[#c8f56a]/60 bg-[#0a0c0e] px-3 py-2 transition-all cursor-pointer group"
@@ -99,7 +97,6 @@ export default function Hero({ onSelectProject, onOpenTerminal }: HeroProps) {
             <div className="pt-4 border-t border-[#1c2024] flex items-center justify-between text-xs font-mono text-[var(--text-muted)]">
               <a
                 href="#projects"
-                onClick={() => sound.playClick(800, 0.02)}
                 className="flex items-center gap-2 hover:text-[var(--text-primary)] transition-colors group cursor-pointer"
               >
                 <ArrowDown className="w-3.5 h-3.5 text-[#c8f56a] group-hover:translate-y-0.5 transition-transform" />
@@ -114,7 +111,7 @@ export default function Hero({ onSelectProject, onOpenTerminal }: HeroProps) {
         </div>
 
         {/* RIGHT COLUMN: Featured Project Showcase Box */}
-        <div className="lg:col-span-6 p-6 sm:p-10 lg:p-14 flex flex-col justify-between bg-[#0a0b0d] relative">
+        <div className="lg:col-span-6 p-5 sm:p-10 lg:p-14 flex flex-col justify-between bg-[#0a0b0d] relative">
           {/* Top metadata of the showcase */}
           <div>
             <div className="flex items-center justify-between text-xs font-mono mb-2">
@@ -142,7 +139,6 @@ export default function Hero({ onSelectProject, onOpenTerminal }: HeroProps) {
             <div className="flex items-center justify-between">
               <button
                 onClick={() => {
-                  sound.playClick(900, 0.03);
                   onSelectProject?.('saas-backend');
                 }}
                 className="flex items-center gap-1.5 text-xs font-mono text-[var(--text-primary)] hover:text-[#c8f56a] transition-colors py-1 group cursor-pointer"

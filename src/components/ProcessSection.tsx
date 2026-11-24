@@ -3,14 +3,12 @@
 import React, { useState } from 'react';
 import { processSteps } from '@/data/process';
 import { Check, Code, Terminal, ChevronRight, Copy, CheckCircle2 } from 'lucide-react';
-import { sound } from '@/utils/sound';
 
 export default function ProcessSection() {
   const [selectedStep, setSelectedStep] = useState<number>(0);
   const [copied, setCopied] = useState(false);
 
   const handleCopyCode = () => {
-    sound.playClick(900, 0.03);
     navigator.clipboard.writeText(processSteps[selectedStep].codeSample.code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -19,7 +17,7 @@ export default function ProcessSection() {
   return (
     <section id="process" className="relative border-b border-[var(--border-color)]">
       {/* Section Header */}
-      <div className="border-b border-[var(--border-color)] px-6 sm:px-10 lg:px-14 py-6 bg-[var(--bg-color)] flex items-center justify-between">
+      <div className="border-b border-[var(--border-color)] px-4 sm:px-10 lg:px-14 py-4 sm:py-6 bg-[var(--bg-color)] flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs font-mono">
           <span className="text-[#c8f56a] font-bold">—</span>
           <h2 className="text-[var(--text-primary)] font-semibold tracking-wider uppercase text-xs">
@@ -39,10 +37,9 @@ export default function ProcessSection() {
           <div
             key={idx}
             onClick={() => {
-              sound.playClick(850, 0.02);
               setSelectedStep(idx);
             }}
-            className={`p-6 sm:p-8 flex flex-col justify-between cursor-pointer transition-all ${
+            className={`p-5 sm:p-8 flex flex-col justify-between cursor-pointer transition-all ${
               selectedStep === idx
                 ? 'bg-[#0e1013] border-t-2 border-t-[#c8f56a]'
                 : 'bg-[var(--bg-color)] hover:bg-[var(--bg-surface)]/20'
@@ -102,10 +99,10 @@ export default function ProcessSection() {
       </div>
 
       {/* Interactive Code / Deliverable Inspector for Selected Step */}
-      <div className="border-t border-[var(--border-color)] p-6 sm:p-10 bg-[#08090a] font-mono text-xs">
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-          <div className="flex items-center gap-2">
-            <Terminal className="w-4 h-4 text-[#c8f56a]" />
+      <div className="border-t border-[var(--border-color)] p-4 sm:p-8 lg:p-10 bg-[#08090a] font-mono text-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-4">
+          <div className="flex items-center gap-2 flex-wrap">
+            <Terminal className="w-4 h-4 text-[#c8f56a] shrink-0" />
             <span className="text-[var(--text-primary)] font-bold uppercase tracking-wider text-xs">
               SPECIMEN: {processSteps[selectedStep].number} — {processSteps[selectedStep].title}
             </span>
@@ -118,7 +115,7 @@ export default function ProcessSection() {
             <span>LANGUAGE: {processSteps[selectedStep].codeSample.language.toUpperCase()}</span>
             <button
               onClick={handleCopyCode}
-              className="flex items-center gap-1 px-2 py-0.5 border border-[#1c2024] hover:border-[#c8f56a] hover:text-[#c8f56a] transition-colors cursor-pointer text-[10px]"
+              className="flex items-center gap-1 px-2.5 py-1 border border-[#1c2024] hover:border-[#c8f56a] hover:text-[#c8f56a] transition-colors cursor-pointer text-[10px]"
             >
               {copied ? <CheckCircle2 className="w-3 h-3 text-[#c8f56a]" /> : <Copy className="w-3 h-3" />}
               <span>{copied ? 'COPIED' : 'COPY'}</span>
@@ -126,7 +123,7 @@ export default function ProcessSection() {
           </div>
         </div>
 
-        <pre className="p-4 bg-[#050607] border border-[var(--border-color)] text-[11px] leading-relaxed text-[var(--text-primary)] overflow-x-auto">
+        <pre className="p-3 sm:p-4 bg-[#050607] border border-[var(--border-color)] text-[10px] sm:text-[11px] leading-relaxed text-[var(--text-primary)] overflow-x-auto">
           <code>{processSteps[selectedStep].codeSample.code}</code>
         </pre>
       </div>

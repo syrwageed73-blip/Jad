@@ -12,7 +12,7 @@ export default function ProjectVisual({ project }: ProjectVisualProps) {
   switch (project.id) {
     case 'saas-backend':
       return (
-        <div className="w-full h-full min-h-[290px] bg-[#070809] border border-[#1c2024] p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
+        <div className="w-full h-full min-h-[280px] bg-[#070809] border border-[#1c2024] p-4 sm:p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
           <div className="flex items-center justify-between border-b border-[#1c2024] pb-3">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#c8f56a]" />
@@ -62,7 +62,7 @@ export default function ProjectVisual({ project }: ProjectVisualProps) {
 
     case 'commerce-platform':
       return (
-        <div className="w-full h-full min-h-[290px] bg-[#070809] border border-[#1c2024] p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
+        <div className="w-full h-full min-h-[280px] bg-[#070809] border border-[#1c2024] p-4 sm:p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
           <div className="flex items-center justify-between border-b border-[#1c2024] pb-3">
             <div className="flex items-center gap-2">
               <Zap className="w-3.5 h-3.5 text-[#c8f56a]" />
@@ -109,7 +109,7 @@ export default function ProjectVisual({ project }: ProjectVisualProps) {
 
     case 'ai-orchestration':
       return (
-        <div className="w-full h-full min-h-[290px] bg-[#070809] border border-[#1c2024] p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
+        <div className="w-full h-full min-h-[280px] bg-[#070809] border border-[#1c2024] p-4 sm:p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
           <div className="flex items-center justify-between border-b border-[#1c2024] pb-3">
             <div className="flex items-center gap-2">
               <Cpu className="w-3.5 h-3.5 text-[#c8f56a]" />
@@ -159,7 +159,7 @@ export default function ProjectVisual({ project }: ProjectVisualProps) {
 
     case 'rag-private-qa':
       return (
-        <div className="w-full h-full min-h-[290px] bg-[#070809] border border-[#1c2024] p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
+        <div className="w-full h-full min-h-[280px] bg-[#070809] border border-[#1c2024] p-4 sm:p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
           <div className="flex items-center justify-between border-b border-[#1c2024] pb-3">
             <div className="flex items-center gap-2">
               <Database className="w-3.5 h-3.5 text-[#c8f56a]" />
@@ -205,7 +205,7 @@ export default function ProjectVisual({ project }: ProjectVisualProps) {
 
     case 'data-pipelines-analytics':
       return (
-        <div className="w-full h-full min-h-[290px] bg-[#070809] border border-[#1c2024] p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
+        <div className="w-full h-full min-h-[280px] bg-[#070809] border border-[#1c2024] p-4 sm:p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
           <div className="flex items-center justify-between border-b border-[#1c2024] pb-3">
             <div className="flex items-center gap-2">
               <Layers className="w-3.5 h-3.5 text-[#c8f56a]" />
@@ -252,7 +252,7 @@ export default function ProjectVisual({ project }: ProjectVisualProps) {
 
     case 'cloud-infra-security':
       return (
-        <div className="w-full h-full min-h-[290px] bg-[#070809] border border-[#1c2024] p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
+        <div className="w-full h-full min-h-[280px] bg-[#070809] border border-[#1c2024] p-4 sm:p-5 flex flex-col justify-between text-xs font-mono relative overflow-hidden group">
           <div className="flex items-center justify-between border-b border-[#1c2024] pb-3">
             <div className="flex items-center gap-2">
               <Shield className="w-3.5 h-3.5 text-[#c8f56a]" />
