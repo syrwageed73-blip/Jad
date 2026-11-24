@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Silkscreen:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-color: #08090a;
+  --bg-surface: #0e1012;
+  --bg-subtle: #131518;
+  --bg-code: #050607;
+  --border-color: #1c2024;
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(200, 245, 106, 0.4);
+  --text-primary: #f2f4f8;
+  --text-muted: #7b8492;
+  --text-dim: #444b56;
+  --accent-lime: #c8f56a;
+  --accent-lime-dim: rgba(200, 245, 106, 0.12);
+  --accent-lime-border: rgba(200, 245, 106, 0.35);
+  --accent-lime-glow: rgba(200, 245, 106, 0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #c8f56a;
+  color: #08090a;
+}
+
+/* Custom Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c8f56a;
+}
+
+/* Typography Helpers */
+.font-pixel {
+  font-family: 'Silkscreen', monospace;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.font-space {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Border Helpers */
+.border-grid {
+  border-color: var(--border-color);
+}
+
+.border-grid-light {
+  border-color: var(--border-light);
+}
+
+/* Subtle Technical Matrix Grid */
+.bg-grid-subtle {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-dots-subtle {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Packet flow animation for network buses */
+@keyframes packet-flow {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+.animate-packet {
+  animation: packet-flow 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Blinking Terminal Cursor */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Pulse lime indicator */
+@keyframes pulse-lime {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-lime {
+  animation: pulse-lime 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Tactile scale on press */
+button:active, a:active {
+  transform: scale(0.98);
+  transition-property: transform;
+  transition-duration: 75ms;
+}
